@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GarageBuild</title>
+</head>
+<body>
+  <h1>GarageBuild</h1>
+  <p>Status da API: <strong id="status">verificando...</strong></p>
+
+  <script>
+    fetch('/api/health')
+      .then((resposta) => resposta.json())
+      .then((dados) => {
+        document.getElementById('status').textContent = dados.status;
+      })
+      .catch(() => {
+        document.getElementById('status').textContent = 'erro ao conectar';
+      });
+  </script>
+</body>
+</html>
